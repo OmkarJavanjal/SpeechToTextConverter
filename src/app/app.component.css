@@ -1,0 +1,25 @@
+h4 {
+    text-align: center;
+    color: blue;
+}
+
+h3 {
+    text-align: left;
+    color:purple;
+}
+
+h2 {
+    text-align: center;
+    color: blue;
+}
+
+li {
+    text-align:left;
+    color:orangered;
+}
+
+.chatboatWidth {
+    Width:100%;
+    height:100%;
+    margin-top:65px;
+}

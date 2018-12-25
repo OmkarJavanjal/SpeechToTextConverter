@@ -1,0 +1,146 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2 class="title">&nbsp;&nbsp; Speech to Text Converter</h2>
+                </div>
+                <div class="text-center">
+                    <div>
+                        <label style="font:italic; font-size:18px; color:brown"> Select Typing Scheme:</label> &nbsp;&nbsp;
+                        <input type="radio" name="chat" value="chat" (change)="handleChange()" [(ngModel)]="typingScheme" > <u><i><b>Chat</b></i></u>
+                        <input type="radio" name="email" value="email" (change)="handleChange()" [(ngModel)]="typingScheme" > <u><i><b>Email</b></i></u> <br>
+                    </div>
+                    <div>
+                        <label style="font:italic; font-size:18px; color:brown"> Select Language:</label> &nbsp;&nbsp;
+                        <select (change)="onChange($event)">
+                            <option name="English (United States)" value="en-US">English (United States)</option>
+                            <option name="English (United Kingdom)" value="en-GB">English (United Kingdom)</option>
+                            <option name="English (India)" value="en-IN">English (India)</option>
+                            <option name="Hindi (India)" value="hi-IN">हिन्दी (भारत)</option>
+                            <option name="Marathi (India)" value="mr-IN">मराठी (भारत)</option>
+                            <option name="Gujarati (India)" value="gu-IN">ગુજરાતી (ભારત)</option>
+                            <option name="Kannada (India)" value="kn-IN">ಕನ್ನಡ (ಭಾರತ)</option>
+                            <option name="Tamil (India)" value="ta-IN">தமிழ் (இந்தியா)</option>
+                            <option name="Telugu (India)" value="te-IN">తెలుగు (భారతదేశం)</option>
+                            <option name="Spanish (Spain)" value="es-ES">Español (España)</option>
+                            <option name="French (France)" value="fr-FR">Français (France)</option>
+                            <option name="Italian (Italy)" value="it-IT">Italiano (Italia)</option>
+                            <option name="Russian (Russia)" value="ru-RU">Русский (Россия)</option>
+                            <option name="German (Germany)" value="de-DE">Deutsch (Deutschland)</option>
+                            <option name="Japanese (Japan)" value="ja-JP">日本語（日本)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label></label>
+                                <!--<input type="text" style="height:220px; width:1100px;" class="form-control border-input" (keyup)="limitText(userinput)" name="txtSpeechSearchMovieName" id="txtSpeechSearchMovieName" value=""
+                                       placeholder="Click below button and then say something!!!" [(ngModel)]="speechData" #userinput>
+                                -->
+                                 <textarea style="height:220px;" class="col-sm-12 col-md-9 col-lg-9 col-xs-12 form-control border-input" name="txtSpeechSearchMovieName" id="txtSpeechSearchMovieName" value=""
+                                       placeholder="Click below button and then say something!!!" [(ngModel)]="speechValue" #userinput> </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <button class="btn btn-success btn-fill btn-wd" name="btnActivateSpeechSearchMovie" id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"
+                                [disabled]="!showSearchButton">
+                            {{buttonText}}
+                        </button>
+                        <button class="btn btn-danger btn-fill btn-wd" name="btnCopyText" id="btnCopyText" (click)="copyInputText(userinput)">
+                            Copy Text
+                        </button>
+                        <button class="btn btn-warning btn-fill btn-wd" name="sendEmail" id="sendEmail" (click)="sendEmail(userinput)">
+                            Send Email
+                        </button>
+                        <button class="btn btn-primary btn-fill btn-wd" (click)="clearTextBox()">
+                            Clear
+                        </button>
+                        <button class="btn btn-success btn-fill btn-wd" name="playText" id="playText" (click)="playText(userinput)">
+                            Play
+                        </button>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+            <div class='col-sm-12 col-md-3 col-lg-3 col-xs-12'>
+                <h3 class ='chatboatWidth'>Special Characters</h3>
+                <div>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter('.')">
+                        .
+                    </button>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter(',')">
+                        ,
+                    </button>  
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter('?')">
+                        ?
+                    </button>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter(':')">
+                        :
+                    </button> 
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter(';')">
+                        ;
+                    </button>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter('-')">
+                        -
+                    </button><br>  
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter('!')">
+                        !
+                    </button>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="breakLine()">
+                        Enter
+                    </button>  
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter2(':-)')">
+                        Smiley
+                    </button><br>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="specialCharacter2(':-(')">
+                        Sad Face
+                    </button>
+                    <button class="btn btn-info btn-fill btn-wd" name="specialCharacter" id="specialCharacter" (click)="backSpace()">
+                        Backspace
+                    </button>
+                </div>
+            </div>
+    </div>
+</div>
+<h4>*Make Sure That Chrome Has Latest Version Which Supports Speech Recognition</h4>
+<div>
+    <h3>*How To Use*</h3>
+    <ul>
+        <li style="text-decoration: underline">Check appropriate Radio Button For Typing Scheme.</li>
+        <ul>
+        <li>For Chatting Select Chat</li> 
+        <li>If Want To Send Email Select Email And Click On Send Email Button After Your Message</li>
+        </ul>
+        <li>To Resize Text Area Click And Adjust Bottom Right Symbol </li>
+        <li>Click on Enable Search Button For Starting Speech Recognition</li>
+        <li>To Copy Text Click On Copy Text Button</li>
+        <li>To Send Mail Click onSend Mail Button</li>
+        <li>To Clear Text Box Click On Clear Button</li>
+        <li>To Play Text Audio Click On Play Button</li>
+    </ul>
+</div>
+
+<!--
+<div class="form-group">
+                                <label></label>
+                                <input type="text" class="form-control border-input" name="txtSpeechSearchMovieName" id="txtSpeechSearchMovieName" value=""
+                                       placeholder="Click below button and then say something!!!" [(ngModel)]="speechData">
+                            </div>
+
+
+<div class="text-center">
+                        <button class="btn btn-info btn-fill btn-wd" name="btnActivateSpeechSearchMovie" id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"
+                                [disabled]="!showSearchButton">
+                            Enable Speech Search
+                        </button>
+                    </div>
+
+                    -->

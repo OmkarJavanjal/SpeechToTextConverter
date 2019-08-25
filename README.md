@@ -1,3 +1,5 @@
+Hosted on firebase: https://web-speech-api-in-angular2.firebaseapp.com/
+
 # Chatapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
